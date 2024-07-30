@@ -45,34 +45,53 @@ class Login extends Component {
 
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
-
-    Cookies.set('jwt_token', jwtToken, {
-      expires: 30,
-      path: '/',
-    })
+    Cookies.set('jwt_token', jwtToken, {expires: 30, path: '/'})
     history.replace('/')
   }
-
   onSubmitFailure = errorMsg => {
-    // console.log(errorMsg)
     this.setState({showSubmitError: true, errorMsg})
   }
+
+  // onSubmitData = async event => {
+  //   event.preventDefault()
+  //   const {username, password} = this.state
+  //   const userDetails = {username, password}
+  //   const url = 'https://apis.ccbp.in/login'
+  //   const options = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(userDetails),
+  //   }
+
+  //   const response = await fetch(url, options)
+  //   const data = await response.json()
+  //   if (response.ok) {
+  //     this.onSubmitSuccess(data.jwtToken)
+  //   } else {
+  //     this.onSubmitFailure(data.error)
+  //   }
+  // }
 
   onSubmitData = async event => {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
-    const url = 'https://apis.ccbp.in/login'
+    const url = 'https://nxtwatchbackend-sh20.onrender.com/login'
     const options = {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(userDetails),
     }
     const response = await fetch(url, options)
-    // console.log(response)
     const data = await response.json()
-    // console.log(data)
+    console.log(response)
+    console.log(data)
     if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
+      this.onSubmitSuccess(data.jwtToken)
     } else {
       this.onSubmitFailure(data.error_msg)
     }
@@ -86,14 +105,9 @@ class Login extends Component {
     return (
       <ContextComponent.Consumer>
         {value => {
-          const {isDarkTheme, changetheme} = value
-          const {
-            username,
-            password,
-            showPassword,
-            showSubmitError,
-            errorMsg,
-          } = this.state
+          const {isDarkTheme} = value
+          const {username, password, showPassword, showSubmitError, errorMsg} =
+            this.state
           return (
             <LogInPage isDarkTheme={isDarkTheme}>
               <LoginContainer isDarkTheme={isDarkTheme}>
@@ -142,7 +156,6 @@ class Login extends Component {
                   </CheckBoxContainer>
                   <Button type="submit">Login</Button>
                   {showSubmitError ? <ErrMsg>*{errorMsg}</ErrMsg> : null}
-                  <p />
                 </FormContainer>
               </LoginContainer>
             </LogInPage>
