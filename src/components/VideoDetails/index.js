@@ -58,6 +58,7 @@ class VideoDetails extends Component {
     const {searchInput} = this.state
     const apiUrl = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const token = Cookies.get('jwt_token')
+    console.log(token)
     const options = {
       headers: {
         Authorization: `Bearer ${token}`,

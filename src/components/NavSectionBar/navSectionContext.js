@@ -46,10 +46,20 @@ export const ListItem = styled.li`
   margin: 0;
   transition: background-color 0.3s, color 0.3s;
   font-size: 22px;
-  background-color: ${({active, isDarkTheme}) =>
-    active ? (isDarkTheme ? '#424242' : '#e0e0e0') : 'transparent'};
-  color: ${({active, isDarkTheme}) =>
-    active ? (isDarkTheme ? '#ffffff' : '#000000') : 'inherit'};
+  background-color: ${({active, isDarkTheme}) => {
+    if (active) {
+      if (isDarkTheme) return '#424242'
+      return '#e0e0e0'
+    }
+    return 'transparent'
+  }};
+  color: ${({active, isDarkTheme}) => {
+    if (active) {
+      if (isDarkTheme) return '#ffffff'
+      return '#000000'
+    }
+    return 'inherit'
+  }};
 
   &:hover {
     background-color: ${({isDarkTheme}) =>

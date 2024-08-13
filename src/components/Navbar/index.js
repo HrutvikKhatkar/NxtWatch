@@ -1,12 +1,12 @@
-import ContextComponent from '../../ContextComponents'
+import Cookies from 'js-cookie'
 import {FaMoon} from 'react-icons/fa'
 import {IoSunnyOutline} from 'react-icons/io5'
 import {Link, withRouter} from 'react-router-dom'
 import Popup from 'reactjs-popup'
+import ContextComponent from '../../ContextComponents'
 
 import 'reactjs-popup/dist/index.css'
 
-import Cookies from 'js-cookie'
 import {
   GlobalStyles,
   Nav,
@@ -16,7 +16,7 @@ import {
   LogoutButton,
   ThemeButton,
   ThemeButtonDark,
-  LogoutContainer,
+  // LogoutContainer,
   PopUpContainer,
   ButtonContainer,
   Button,

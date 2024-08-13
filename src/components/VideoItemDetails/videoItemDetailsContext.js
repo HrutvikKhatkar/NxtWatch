@@ -110,8 +110,11 @@ export const VideoActionButtonLike = styled.button`
   font-size: 20px;
   display: flex;
   align-items: center;
-  color: ${({isDarkTheme, isLiked}) =>
-    isLiked ? '#2563eb' : isDarkTheme ? '#ffffff' : '#000000'};
+  color: ${({isDarkTheme, isLiked}) => {
+    if (isLiked) return '#2563eb'
+    if (isDarkTheme) return '#ffffff'
+    return '#000000'
+  }};
 
   p {
     font-size: 15px;
@@ -119,12 +122,18 @@ export const VideoActionButtonLike = styled.button`
   }
 `
 export const VideoActionButtonDislike = styled(VideoActionButtonLike)`
-  color: ${({isDarkTheme, isDisliked}) =>
-    isDisliked ? '#2563eb' : isDarkTheme ? '#ffffff' : '#000000'};
+  color: ${({isDarkTheme, isDisliked}) => {
+    if (isDisliked) return '#2563eb'
+    if (isDarkTheme) return '#ffffff'
+    return '#000000'
+  }};
 `
 export const VideoActionButtonSaved = styled(VideoActionButtonLike)`
-  color: ${({isDarkTheme, isSaved}) =>
-    isSaved ? '#2563eb' : isDarkTheme ? '#ffffff' : '#000000'};
+  color: ${({isDarkTheme, isSaved}) => {
+    if (isSaved) return '#2563eb'
+    if (isDarkTheme) return '#ffffff'
+    return '#000000'
+  }};
 `
 export const HorizontalLine = styled.hr`
   width: 100%;
