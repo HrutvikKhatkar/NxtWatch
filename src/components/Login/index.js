@@ -319,7 +319,7 @@ class Login extends Component {
                   <Input
                     id="username"
                     type="text"
-                    placeholder="Username"
+                    placeholder="Username rahul"
                     value={username}
                     onChange={this.onChangeUsername}
                     isDarkTheme={isDarkTheme}
@@ -330,7 +330,7 @@ class Login extends Component {
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Password"
+                    placeholder="Password rahul@2021"
                     value={password}
                     onChange={this.onChangePassword}
                     isDarkTheme={isDarkTheme}
